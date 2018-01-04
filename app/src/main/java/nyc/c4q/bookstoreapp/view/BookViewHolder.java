@@ -32,8 +32,8 @@ public class BookViewHolder extends RecyclerView.ViewHolder{
         title.setText(book.getName());
         author.setText(book.getAuthor());
         isbn.setText(book.getId());
-        price.setText(book.getPrice());
-        inStock.setText(book.getInStock());
+        price.setText(String.valueOf(book.getPrice()));
+        inStock.setText(String.valueOf(book.isInstock()));
 
     }
 }

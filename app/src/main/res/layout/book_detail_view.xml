@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/book_title_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        android:textSize="36sp"
+        android:gravity="center"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"/>
+    <TextView
+        android:id="@+id/book_author_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Author"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"/>
+    <TextView
+        android:id="@+id/book_isbn_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="isbn"/>
+    <TextView
+        android:id="@+id/book_price_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="price"/>
+    <TextView
+        android:id="@+id/book_instock_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="in stock"
+        />
+
+</android.support.constraint.ConstraintLayout>
