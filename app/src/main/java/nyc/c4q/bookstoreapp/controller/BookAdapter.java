@@ -18,9 +18,13 @@ import nyc.c4q.bookstoreapp.view.BookViewHolder;
 public class BookAdapter extends RecyclerView.Adapter<BookViewHolder> {
 
     private List<Book> bookList;
+    View.OnClickListener clickListener;
 
-    public BookAdapter(List<Book> bookList) {
+
+
+    public BookAdapter(List<Book> bookList, View.OnClickListener clickListener) {
         this.bookList = bookList;
+        this.clickListener = clickListener;
     }
 
     @Override
@@ -34,8 +38,8 @@ public class BookAdapter extends RecyclerView.Adapter<BookViewHolder> {
     public void onBindViewHolder(final BookViewHolder holder, int position) {
         Book book = bookList.get(position);
         holder.onBind(book);
-
-
+        holder.getTitle().setTag(book.getId());
+        holder.itemView.setOnClickListener(clickListener);
     }
 
     @Override

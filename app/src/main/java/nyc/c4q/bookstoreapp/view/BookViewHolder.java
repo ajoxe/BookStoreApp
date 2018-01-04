@@ -14,10 +14,31 @@ import nyc.c4q.bookstoreapp.model.Book;
 public class BookViewHolder extends RecyclerView.ViewHolder{
     TextView title;
     TextView author;
-    TextView isbn;
     TextView price;
-    TextView inStock;
 
+    public TextView getTitle() {
+        return title;
+    }
+
+    public void setTitle(TextView title) {
+        this.title = title;
+    }
+
+    public TextView getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(TextView author) {
+        this.author = author;
+    }
+
+    public TextView getPrice() {
+        return price;
+    }
+
+    public void setPrice(TextView price) {
+        this.price = price;
+    }
 
     public BookViewHolder(View itemView) {
         super(itemView);

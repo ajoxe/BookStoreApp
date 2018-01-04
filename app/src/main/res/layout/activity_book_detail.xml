@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="nyc.c4q.bookstoreapp.BookDetailActivity"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/bookdet_title_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        android:textSize="36sp"
+        android:gravity="center"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"/>
+    <TextView
+        android:id="@+id/bookdet_author_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Author"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"/>
+    <TextView
+        android:id="@+id/bookdet_isbn_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="isbn"/>
+    <TextView
+        android:id="@+id/bookdet_price_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="price"/>
+    <TextView
+        android:id="@+id/book_instock_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="in stock"
+        />
+
+</LinearLayout>

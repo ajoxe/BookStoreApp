@@ -24,7 +24,7 @@ public class BookDataSource extends ArrayList<Book>{
     private BookDataSource bookDataSource;
 
 
-    public BookDataSource setBookData(String string){
+    public void setBookData(String string){
         Type collectiontype = new TypeToken<Collection<Book>>() {
         }.getType();
         Gson gs = new Gson();
@@ -37,9 +37,9 @@ public class BookDataSource extends ArrayList<Book>{
         }
         InputStreamReader isr = new InputStreamReader(is);
         books = gs.fromJson(isr, collectiontype);
-        bookDataSource = new BookDataSource();
-        bookDataSource.addAll(books);
-        return bookDataSource;
+        //bookDataSource = new BookDataSource();
+        addAll(books);
+        // return bookDataSource;
     }
 
 
