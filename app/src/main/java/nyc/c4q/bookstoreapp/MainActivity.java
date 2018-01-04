@@ -57,11 +57,8 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.d("result", result);
 
-
-
                 bookDataSource = bookDataSource.setBookData(result);
-                
-                    bookList.addAll(bookDataSource);
+                bookList.addAll(bookDataSource);
 
                 Log.d("main", String.valueOf(bookDataSource.size()));
 
