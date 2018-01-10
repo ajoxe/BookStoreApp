@@ -3,12 +3,18 @@ package nyc.c4q.bookstoreapp;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.squareup.okhttp.Callback;
@@ -51,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
     BookAdapter bookAdapter;
     String url = "https://raw.githubusercontent.com/tamingtext/book/master/apache-solr/example/exampledocs/books.json";
     HashMap<String, Book> bookMap = new HashMap<>();
+    FrameLayout frameLayout;
+    Librarian librarian;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         bookDataSource = new BookDataSource();
         RecyclerView bookRecyclerView = (RecyclerView) findViewById(R.id.book_recyclerview);
         bookAdapter = new BookAdapter(bookList, bookOnClick);
+        frameLayout = (FrameLayout) findViewById(R.id.ad_fragment_container);
 
 
         LinearLayoutManager linearLayoutManager;
@@ -67,6 +76,16 @@ public class MainActivity extends AppCompatActivity {
         bookRecyclerView.setAdapter(bookAdapter);
         makeRequestWithOkHttp(url);
         bookRecyclerView.setLayoutManager(linearLayoutManager);
+
+        AdFragment adFragment = new AdFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.ad_fragment_container, adFragment);
+        fragmentTransaction.commit();
+    }
+
+    public void hideAD(View view){
+        frameLayout.setVisibility(View.GONE);
     }
 
     private void makeRequestWithOkHttp(String url) {
@@ -86,11 +105,12 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.d("result", result);
 
-                bookDataSource.setBookData(result);
-                bookList.addAll(bookDataSource);
-                bookMap = bookHashMap(bookList);
-
-                Log.d("main", String.valueOf(bookDataSource.size()));
+                //bookDataSource.setBookData(result);
+                //bookList.addAll(bookDataSource);
+                //bookMap = bookHashMap(bookList);
+                librarian = new Librarian(result);
+                bookList.addAll(librarian.getBookList());
+                bookList = librarian.sortBookList(bookList);
 
                 MainActivity.this.runOnUiThread(new Runnable() {
                     @Override
@@ -115,6 +135,34 @@ public class MainActivity extends AppCompatActivity {
             bookHashMap.put(b.getId(), b);
         }
         return bookHashMap;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.book_options_menu, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //return super.onOptionsItemSelected(item);
+        switch(item.getItemId()){
+            case R.id.cart_menu_item:
+                //
+                break;
+            case R.id.settings_menu_item:
+                //
+                break;
+            case R.id.help_menu_item:
+                //
+                break;
+            case R.id.profile_menu_item:
+                //
+                break;
+        }
+        return true;
     }
 
     //options menu search cart always tie

@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="cart"
+        android:id="@+id/cart_menu_item"/>
+    <item android:title="settings"
+        android:id="@+id/settings_menu_item"/>
+    <item android:title="profile"
+        android:id="@+id/profile_menu_item"/>
+    <item android:title="help"
+        android:id="@+id/help_menu_item"/>
 
 </menu>

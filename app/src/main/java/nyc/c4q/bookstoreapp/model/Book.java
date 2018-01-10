@@ -1,10 +1,12 @@
 package nyc.c4q.bookstoreapp.model;
 
+import android.support.annotation.NonNull;
+
 /**
  * Created by amirahoxendine on 12/13/17.
  */
 
-public class Book {
+public class Book implements Comparable{
     String id;
     String [] cat;
     String name;
@@ -107,5 +109,11 @@ public class Book {
 
     public void setPages_i(int pages_i) {
         this.pages_i = pages_i;
+    }
+
+    @Override
+    public int compareTo(@NonNull Object o) {
+        Book book = (Book) o;
+        return this.name.compareTo(book.name);
     }
 }
